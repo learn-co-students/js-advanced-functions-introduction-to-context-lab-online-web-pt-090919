@@ -57,7 +57,9 @@ describe("The payroll system", function () {
 
       it("correctly assigns the first names", function () {
         let employeeRecords = createEmployeeRecords(twoRows)
-        let nameExtractor = function (e) { return e.firstName }
+        let nameExtractor = function (e) {
+          return e.firstName
+        }
         expect(employeeRecords.map(nameExtractor)).to.eql(["moe", "bartholomew"]);
       })
     })
@@ -192,12 +194,12 @@ describe("The payroll system", function () {
 
         let sTimeData = [
           ["2019-01-01 0900", "2019-01-01 1300"], // 4 * 100 = 400
-          ["2019-01-02 1000", "2019-01-02 1300"]  // 3 * 100 = 300 ===> 700 total
+          ["2019-01-02 1000", "2019-01-02 1300"] // 3 * 100 = 300 ===> 700 total
         ]
 
         let rTimeData = [
           ["2019-01-11 0900", "2019-01-11 1300"], // 4 * 10 = 40
-          ["2019-01-12 1000", "2019-01-12 1300"]  // 3 * 10 = 40 ===> 70 total ||=> 770
+          ["2019-01-12 1000", "2019-01-12 1300"] // 3 * 10 = 40 ===> 70 total ||=> 770
         ]
 
         sTimeData.forEach(function (d) {
@@ -289,15 +291,15 @@ describe("The payroll system", function () {
       ]
 
       describe("from several imported CSV structures", function () {
-        let employeeRecords
+        let employeeRecords;
 
-        describe("calculatePayroll", function() {
+        describe("calculatePayroll", function () {
           it("exists", function () {
             expect(calculatePayroll).to.exist
           })
 
           it("correctly sums the payroll burden to $11,880 when passed an array of employee records", function () {
-            let employeeRecords = createEmployeeRecords(csvDataEmployees)
+            employeeRecords = createEmployeeRecords(csvDataEmployees)
             employeeRecords.forEach(function (rec) {
               let timesInRecordRow = csvTimesIn.find(function (row) {
                 return rec.firstName === row[0]
@@ -307,14 +309,14 @@ describe("The payroll system", function () {
                 return rec.firstName === row[0]
               })
 
-              timesInRecordRow[1].forEach(function(timeInStamp){
+              timesInRecordRow[1].forEach(function (timeInStamp) {
                 createTimeInEvent(rec, timeInStamp)
               })
 
-              timesOutRecordRow[1].forEach(function(timeOutStamp){
+              timesOutRecordRow[1].forEach(function (timeOutStamp) {
                 createTimeOutEvent(rec, timeOutStamp)
               })
-            }) 
+            })
             expect(calculatePayroll(employeeRecords)).to.eql(11880)
           })
         })
@@ -322,5 +324,3 @@ describe("The payroll system", function () {
     })
   })
 })
-
-
