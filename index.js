@@ -79,9 +79,9 @@ function allWagesFor(employeeRec) {
 function calculatePayroll(employeesRecs) {
   const totalPay = employeesRecs.reduce((total, employeeRec) => total + allWagesFor(employeeRec), 0);
   return totalPay;
-}
+};
 
 function findEmployeeByFirstName(srcArray, firstName) {
-  const employee = srcArray.find(employeeRec => employeeRec.firstName === firstName)
+  const employee = srcArray.find(employeeRec => employeeRec.firstName === firstName);
   return employee;
-}
+};
