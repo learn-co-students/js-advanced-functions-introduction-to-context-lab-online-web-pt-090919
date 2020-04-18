@@ -257,10 +257,10 @@ describe("The payroll system", function () {
 
     describe("Full Payroll Test", function () {
       /* Imported data courtesy of Ultron Consulting services
-       *
-       * Why go for smart when you can go for artificially intelligent? -- Ultron
-       * Consulting
-       */
+      *
+      * Why go for smart when you can go for artificially intelligent? -- Ultron
+      * Consulting
+      */
       const csvDataEmployees = [
         ["Thor", "Odinsson", "Electrical Engineer", 45],
         ["Loki", "Laufeysson-Odinsson", "HR Representative", 35],
